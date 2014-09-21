@@ -1,13 +1,12 @@
 class QuotesController < Rulers::Controller
   def index
-    quotes = FileModel.all
-    render :index, :quotes => quotes
+    @quotes = FileModel.all
   end
 
   def show
-    quote = FileModel.find(params['id'])
-    ua = request.user_agent
-    render_response :quote, :obj => quote, :ua => ua
+    @quote = FileModel.find(params['id'])
+    @ua = request.user_agent
+    render_response :quote
   end
 
   def a_quote
